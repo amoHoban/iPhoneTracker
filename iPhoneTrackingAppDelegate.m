@@ -151,7 +151,7 @@
     return NO;
   }
 
-  const float precision = 100;
+  const float precision = 1;
   NSMutableDictionary* buckets = [NSMutableDictionary dictionary];
 
   NSString* queries[] = {@"SELECT * FROM CellLocation;", @"SELECT * FROM WifiLocation;"};
