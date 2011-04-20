@@ -129,6 +129,11 @@
       NSLog(@"Exception: %@", [exception reason]);
     }
   }
+  if (!loadWorked) {
+      NSString* alternate = [NSString stringWithFormat:@"%@/Desktop/consolidated.db", NSHomeDirectory()];
+      NSLog(@"trying to load from %@...", alternate);
+      loadWorked = [self tryToLoadLocationDB:alternate forDevice:alternate];
+  }
 
   if (!loadWorked) {
     [self displayErrorAndQuit: [NSString stringWithFormat: @"Couldn't load consolidated.db file from '%@'", backupPath]];  
