@@ -151,7 +151,6 @@
     return NO;
   }
 
-  const float precision = 1;
   NSMutableDictionary* buckets = [NSMutableDictionary dictionary];
 
   NSString* queries[] = {@"SELECT * FROM CellLocation;", @"SELECT * FROM WifiLocation;"};
@@ -189,10 +188,8 @@
 
       NSString* timeBucketString = [timeBucketDate descriptionWithCalendarFormat:@"%Y-%m-%d %H:%M:%S" timeZone:nil locale:nil];
 
-      const float latitude_index = (floor(latitude*precision)/precision);  
-      const float longitude_index = (floor(longitude*precision)/precision);
-      NSString* allKey = [NSString stringWithFormat:@"%f,%f,All Time", latitude_index, longitude_index];
-      NSString* timeKey = [NSString stringWithFormat:@"%f,%f,%@", latitude_index, longitude_index, timeBucketString];
+      NSString* allKey = [NSString stringWithFormat:@"%f,%f,All Time", latitude, longitude];
+      NSString* timeKey = [NSString stringWithFormat:@"%f,%f,%@", latitude, longitude, timeBucketString];
 
       [self incrementBuckets: buckets forKey: allKey];
       [self incrementBuckets: buckets forKey: timeKey];
